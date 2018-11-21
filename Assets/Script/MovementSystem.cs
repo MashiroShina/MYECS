@@ -56,7 +56,7 @@ public class MovementSystem : ComponentSystem {
             if (x!=0||z!=0)
             {
                 normalized = math.normalize(new float3(x, 0, z));
-            }
+            } 
             _input.velocities[i]=new VelocityComponent{moveDir = normalized};
         }
         //sphere
