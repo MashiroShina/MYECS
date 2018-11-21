@@ -18,7 +18,7 @@ public class MovementSystem : ComponentSystem {
     }
     
     //sphere
-    public struct Group
+    public struct SphereGroup
     {
         /*
         [Inject]会从所有Entity中寻找同时拥有VelocityComponent与Position组件的实体，接着获取他们的这些组件，注入我们声明的不同数组中。
@@ -29,18 +29,20 @@ public class MovementSystem : ComponentSystem {
         public ComponentDataArray<Position> Positions;
     }
     //cube
-    public struct GameObject
+    public struct CubeGameObject
     {
+        /*
+        [Inject]会从所有Entity中寻找同时拥有VelocityComponent与Position组件的实体，接着获取他们的这些组件，注入我们声明的不同数组中。
+        我们只需要在结构中声明好筛选的条件与我们需要的组件，ECS就会在背后帮我们处理，给我们想要的结果。
+         */
         public readonly int Length;
-
         public ComponentArray<Transform> Transforms; //该数组可以获取传统的Component
-
         public ComponentDataArray<VelocityComponent> Velocities;//该数组获取继承IComponentData的
     }
     //声明结构类型的字段, 并且加上[Inject]
-    [Inject] private Group data;
+    [Inject] private SphereGroup data;
     
-    [Inject] private GameObject go;
+    [Inject] private CubeGameObject go;
 
     [Inject] private myInput _input;
     protected override void OnUpdate()
